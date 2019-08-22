@@ -1,5 +1,7 @@
 # Manager Azure Subscriptions and Resources
 
+Training materials for the AZ-103 certification exam.
+
 ## Skills
 
 ### Manage Azure Subscriptions

@@ -4,6 +4,10 @@ Training materials for the AZ-103 certification exam.
 ## Skills
 
 ### [Manager Azure Subscriptions and Resources (_15-20%_)](section-1/section-1.md)
+### Implement and manage storage (_15-20%_)
+### Deploy and manage virtual machines (VMs) (_15-20%_)
+### Configure and manage virtual networks (_30-35%_)
+### Manage identities (_15-20%_)
 
 ## Links
 
@@ -22,14 +26,27 @@ Training materials for the AZ-103 certification exam.
 [Azure Command-Line Interface](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
 >The Azure command-line interface (CLI) is Microsoft's cross-platform command-line experience for managing Azure resources. The Azure CLI is easy to learn and the perfect tool for building custom automation that works with Azure resources.
 
+[Microsoft Azure PowerShell](https://github.com/Azure/azure-powershell)
+>This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
+
 ### Training
 
 Microsoft
 
 - [Learning Path for Azure Administration](docs/AzureAdministratorLearningPath\(July2019\).pdf)
+- [Microsoft Learn](https://docs.microsoft.com/en-us/learn/)
+- [Microsoft Hands-on Labs](https://www.microsoft.com/handsonlabs)
+
+Pluralsight
+
+- [Microsoft Azure Administrator (AZ-103)](https://www.pluralsight.com/paths/microsoft-azure-administrator-az-103)
 
 Udemy
 
 - [Microsoft AZ-103: Azure Administrator Exam Certification](https://www.udemy.com/course/az-100-skylines-academy/)
 - [AZ-103 Azure Administrator Exam Certification (AZ-100)](https://www.udemy.com/70533-azure/)
 - [AZ-100/103 Azure Administrator Infrastructure Practice Test](https://www.udemy.com/az-100-azure-administrator-infrastructure-practice-test/)
+
+Community
+
+- [Azure Citadel](https://azurecitadel.com/)
