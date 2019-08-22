@@ -1,9 +1,14 @@
 # AZ-103
 Training materials for the AZ-103 certification exam.
 
+## Skills
+
+### [Manager Azure Subscriptions and Resources (_15-20%_)](section-1/section-1.md)
+
 ## Links
 
 ### Exam
+
 [Exam AZ-103: Microsoft Azure Administrator](https://www.microsoft.com/en-us/learning/exam-az-103.aspx)
 
 ### Resources
@@ -19,19 +24,12 @@ Training materials for the AZ-103 certification exam.
 
 ### Training
 
-**Microsoft**
+Microsoft
 
 - [Learning Path for Azure Administration](docs/AzureAdministratorLearningPath\(July2019\).pdf)
 
-**Udemy**
+Udemy
 
 - [Microsoft AZ-103: Azure Administrator Exam Certification](https://www.udemy.com/course/az-100-skylines-academy/)
 - [AZ-103 Azure Administrator Exam Certification (AZ-100)](https://www.udemy.com/70533-azure/)
 - [AZ-100/103 Azure Administrator Infrastructure Practice Test](https://www.udemy.com/az-100-azure-administrator-infrastructure-practice-test/)
-
-## Skills
-
-**Manager Azure Subscriptions and Resources (_15-20%_)** 
-- Assign administrator permissions
-- Configure cost center quotas and tagging
-- Configure Azure subscription policies at Azure subscription level
