@@ -18,6 +18,10 @@ Managing administratior permissions for Azure subscriptions is done through the 
 
 ### Configure Cost Center Quotas and Tagging
 
+Tags are key/value pairs that function as additional metadata associated with Azure resources for easier mangement.
+
+Tags can be filtered in the _Tags_ service through the Azure portal.
+
 Microsoft recommends three approaches for tracking and managing costs within Azure.
 
 1. Organizing resources wtihin _Resource Groups_.
@@ -25,6 +29,8 @@ Microsoft recommends three approaches for tracking and managing costs within Azu
 1. Organizing resources through multiple _Subscriptions_.
 
 Billing alerts can be added to a _Subscription_ through the account management page.  The alert will send a notification email when the selected billing total is exceded.
+
+[Tagging Resources Using PowerShell](tags_ps.md)
 
 ### Configure Azure Subscription Policies at Azure Subscription Level
 
