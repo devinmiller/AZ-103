@@ -4,7 +4,7 @@ Training materials for the AZ-103 certification exam.
 
 ## Skills
 
-### [Manage Azure Subscriptions](Managing%20Subscriptions%20and%20Resources/)
+### [Manage Azure Subscriptions](Manage%20Subscriptions/)
 
 - Assign administrator permissions
 - Configure cost center quotas and tagging
