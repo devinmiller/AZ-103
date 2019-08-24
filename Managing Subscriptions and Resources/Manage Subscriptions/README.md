@@ -30,9 +30,9 @@ Microsoft recommends three approaches for tracking and managing costs within Azu
 
 Billing alerts can be added to a _Subscription_ through the account management page.  The alert will send a notification email when the selected billing total is exceded.
 
-[Tagging Resources Using PowerShell](tags/tags-powershell.md)
+[Tagging Resources Using PowerShell](Tags/tags-powershell.md)
 
-[Tagging Resources Using Azure CLI](tags/tags-cli.md)
+[Tagging Resources Using Azure CLI](Tags/tags-cli.md)
 
 ### Configure Azure Subscription Policies at Azure Subscription Level
 
