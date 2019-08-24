@@ -1,9 +1,10 @@
 # AZ-103
+
 Training materials for the AZ-103 certification exam.
 
 ## Skills
 
-- **[Manager Azure Subscriptions and Resources (_15-20%_)](section-01/section-01.md)**
+- **[Manager Azure Subscriptions and Resources (_15-20%_)](Managing%20Subscriptions%20and%20Resources/)**
 - **Implement and manage storage (_15-20%_)**
 - **Deploy and manage virtual machines (VMs) (_15-20%_)**
 - **Configure and manage virtual networks (_30-35%_)**
@@ -28,6 +29,9 @@ Training materials for the AZ-103 certification exam.
 
 [Microsoft Azure PowerShell](https://github.com/Azure/azure-powershell)
 >This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
+
+[Define Resources in Azure Resource Manager Templates](https://docs.microsoft.com/en-us/azure/templates/)
+>When creating Resource Manager templates, you need to understand what resource types are available, and what values to use in your template. The Resource Manager template reference documentation simplifies template development by providing these values.
 
 ### Training
 
