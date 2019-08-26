@@ -1,0 +1,23 @@
+2019-08-26T18:24:48.713Z - info:   [13084] *** FOLDER: c:\Src\AZ-103 ***
+2019-08-26T18:24:48.713Z - info:   [13084] AzureReposVSCode/1.149.2 (VSCode 1.37.1; Windows_NT 10.0.18362; Node 10.11.0)
+2019-08-26T18:24:48.714Z - debug:  [13084] Looking for an External Context at c:\Src\AZ-103
+2019-08-26T18:24:48.714Z - debug:  [13084] No External Context at c:\Src\AZ-103
+2019-08-26T18:24:48.727Z - debug:  [13084] Looking for TFVC repository at c:\Src\AZ-103
+2019-08-26T18:24:48.727Z - debug:  [13084] TFVC Creating Tfvc object with localPath='undefined'
+2019-08-26T18:24:48.728Z - debug:  [13084] Using TFS proxy: 
+2019-08-26T18:24:48.729Z - debug:  [13084] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\tf.exe'
+2019-08-26T18:24:48.729Z - debug:  [13084] TFVC Repository created with repositoryRootFolder='c:\Src\AZ-103'
+2019-08-26T18:24:48.730Z - debug:  [13084] TFVC Repository.CheckVersion
+2019-08-26T18:24:48.731Z - debug:  [13084] TFVC: tf add -noprompt -?
+2019-08-26T18:24:48.769Z - debug:  [13084] TFVC: spawned new process (duration: 37ms)
+2019-08-26T18:24:48.788Z - debug:  [13084] TFVC: spawned new process (duration: 18ms)
+2019-08-26T18:24:53.233Z - debug:  [13084] TFVC: add exit code: 0 (duration: 4502ms)
+2019-08-26T18:24:53.234Z - debug:  [13084] TFVC Minimum required version: 14.102.0
+2019-08-26T18:24:53.235Z - debug:  [13084] TFVC (TF.exe, TF.cmd) version: 15.129.28306.1
+2019-08-26T18:24:53.236Z - debug:  [13084] TFVC Repository.FindWorkspace with localPath='c:\Src\AZ-103'
+2019-08-26T18:24:53.237Z - debug:  [13084] TFVC: tf workfold -noprompt c:\Src\AZ-103
+2019-08-26T18:24:53.272Z - debug:  [13084] TFVC: spawned new process (duration: 34ms)
+2019-08-26T18:24:53.762Z - debug:  [13084] TFVC: workfold exit code: 100 (duration: 525ms)
+2019-08-26T18:24:53.763Z - debug:  [13084] TFVC errors (via stderr): Unable to determine the source control server.
+
+2019-08-26T18:24:53.763Z - error:  [13084] Could not find a workspace with mappings (e.g., not a TFVC repository, wrong version of TF is being used).
