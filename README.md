@@ -27,6 +27,10 @@ Training materials for the AZ-103 certification exam.
 [Azure Command-Line Interface](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
 >The Azure command-line interface (CLI) is Microsoft's cross-platform command-line experience for managing Azure resources. The Azure CLI is easy to learn and the perfect tool for building custom automation that works with Azure resources.
 
+[Query Azure CLI Command Output](https://docs.microsoft.com/en-us/cli/azure/query-azure-cli?view=azure-cli-latest)
+
+>The Azure CLI uses the --query argument to execute a JMESPath query on the results of commands. JMESPath is a query language for JSON, giving you the ability to select and modify data from CLI output. Queries are executed on the JSON output before any display formatting.
+
 [Microsoft Azure PowerShell](https://github.com/Azure/azure-powershell)
 >This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
 
