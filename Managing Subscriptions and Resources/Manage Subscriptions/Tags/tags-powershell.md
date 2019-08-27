@@ -8,23 +8,21 @@ Commands for managing tags using PowerShell.
 
 >The Get-AzResource cmdlet gets Azure resources.
 
-#### Get Examples
+**Example 1:** Get all tags for a Virtual Machine resource named _'vmwebprod001'_.
 
-Get all tags for a Virtual Machine resource named _'vmwebprod001'_.
-
-``` ps1
+``` powershell
 PS C:\> (Get-AzResource -Name vmwebprod001 -ResourceGroupName web-prod-rg).Tags
 ```
 
-Get all resources with the tag _'dept'_.
+**Example 2:** Get all resources with the tag _'dept'_.
 
-``` ps1
+``` powershell
 PS C:\> Get-AzResource -TagName dept
 ```
 
-Get all resources with the tag _'dept'_ that have the value _'IT'_.
+**Example 3:** Get all resources with the tag _'dept'_ that have the value _'IT'_.
 
-``` ps1
+``` powershell
 PS C:\> Get-AzResource -Tag @{dept="IT"}
 ```
 
@@ -32,11 +30,9 @@ PS C:\> Get-AzResource -Tag @{dept="IT"}
 
 >The Set-AzResource cmdlet modifies an existing Azure resource. Specify a resource to modify by name and type or by ID.
 
-#### Set Examples
+**Example 1:** Set '_dept'_ tag to a value of _'IT'_ for a virtual machine resource named _'vmwebprod001'_.
 
-Set '_dept'_ tag to a value of _'IT'_ for a virtual machine resource named _'vmwebprod001'_.
-
-``` ps1
+``` powershell
 PS C:\> $Resource = Get-AzResource -Name vmwebprod001 -ResourceGroupName web-prod-rg
 PS C:\> Set-AzResource -ResourceId $Resource.Id -Tags @{dept="IT"} -Force
 ```

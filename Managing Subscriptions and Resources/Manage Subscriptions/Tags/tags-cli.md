@@ -8,11 +8,9 @@ Commands for managing tags using Azure CLI.
 
 >Get the details of a resource.
 
-#### Examples
+**Example 1:** Show the tags for a Virtual Machine resource named _'vmwebprod001_'
 
-Show the tags for a Virtual Machine resource named _'vmwebprod001_'
-
-``` ps1
+``` powershell
 PS C:\> az resource show -g web-prod-rg -n vmwebprod001 --resource-type "Microsoft.Compute/virtualMachines" --query tags
 ```
 
@@ -20,17 +18,15 @@ PS C:\> az resource show -g web-prod-rg -n vmwebprod001 --resource-type "Microso
 
 >List resources.
 
-#### Examples
+**Example 1:** Get all resources with the tag _'dept'_.
 
-Get all resources with the tag _'dept'_.
-
-``` ps1
+``` powershell
 PS C:\> az resource list --tag dept
 ```
 
-Get all resources with the tag _'dept'_ that have the value _'IT'_.
+**Example 2:** Get all resources with the tag _'dept'_ that have the value _'IT'_.
 
-``` ps1
+``` powershell
 PS C:\> az resource list --tag dept=IT
 ```
 
@@ -38,10 +34,8 @@ PS C:\> az resource list --tag dept=IT
 
 >Tag a resource.
 
-#### Examples
+**Example 1:** Tag the virtual machine resource _'vmwebprod001'_ with the key _'dept'_ and value _'IT'_
 
-Tag the virtual machine resource _'vmwebprod001'_ with the key _'dept'_ and value _'IT'_
-
-``` ps1
+``` powershell
 PS C:\> az resource tag --tags dept=IT -g web-prod-rg -n vmwebprod001 --resource-type "Microsoft.Compute/virtualMachines"
 ```
