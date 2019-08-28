@@ -10,21 +10,90 @@ Training materials for the AZ-103 certification exam.
 
 [Overview of the Azure Policy Service](https://docs.microsoft.com/en-us/azure/governance/policy/overview)
 
+[Azure Resource Manager Resource Provider Operations](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations)
+
 ## Skills
 
 ### Assign Administrator Permissions
 
-Managing administratior permissions for Azure subscriptions is done through the _Subscriptions_ service under the _Access Control (IAM)_ option in the Azure portal.
+Managing administrator permissions for Azure subscriptions is done through the _Subscriptions_ service under the _Access Control (IAM)_ option in the Azure portal.
+
+#### [Role-Based Access Control (RBAC)](https://docs.microsoft.com/en-us/azure/role-based-access-control/)
+
+Role-based access control (RBAC) provides the ability to delegate the administration of Azure resources depending on security requirements.  Roles in Azure organize related resource permissions together.  For example, roles for managing virtual machines will have a different set of permissions than roles for managing storage accounts.  There are more than 60 built-in roles available, that vary depending the specific resource, but most fall into one of three categories.
+
+Role Name | Description
+--- | ---
+Owner | Manage resources and resource access
+Contributor | Manage resources but not resource access
+Reader | Read-only access
+
+Roles are applied to a scope
+
+1. Management Groups
+1. Subscription
+1. Resource Group
+1. Individual Resource
+
+Roles are assigned to
+
+1. Users
+1. Groups
+1. Service Principal
+
+Role inheritance flows down the hierarchy established for scopes.
 
 ### Configure Cost Center Quotas and Tagging
 
-Tags are key/value pairs that function as additional metadata associated with Azure resources for easier mangement.
+#### [Spending Limits](https://docs.microsoft.com/en-us/azure/billing/billing-spending-limit)
 
-Tags can be filtered in the _Tags_ service through the Azure portal.
+Spending limits help prevent usage of credits beyond what is available in a subscription.  
+
+They only apply to the follow subscriptions types
+
+- Free Trial
+- Visual Studio
+- MSDN
+
+They do not apply to the following subscription types
+
+- Support Plans
+- Enterprise Dev/Test
+- Pay-As-You-Go
+
+If a spending limit is exceeded, the following happens
+
+1. An email message is sent to the resource owner
+1. Deployed resources are disabled until the next billing cycle
+1. Database and storage accounts become read-only
+
+Spending limits can be removed by create a subscription payment method.
+
+#### [Azure Consumption APIs](https://docs.microsoft.com/en-us/azure/billing/billing-consumption-api-overview)
+
+The Azure consumption APIs return resource usage details and cost through REST API calls.
+
+The following subscription types are supported
+
+- Enterprise Enrollments
+- Web Direct Subscription
+
+API Name|Description
+--- | ---
+Price Sheet <br/> _(Enterprise customers only)_ | Resource usage and pricing expressed using various units of measurement such as hour, GB
+Reservation Summaries | Summary of reserved virtual machine instance reserved consumption vs. actual usage
+Reservation Details | Reserved virtual machine usage
+Reservation Recommendations | Suggested reserved virtual machine instance usage and saving
+Budgets <br/> _(Enterprise customers only)_ | Manage cost and usage budgets and alerts
+Balance <br/> _(Enterprise customers only)_ | Current or previous billing summary
+Marketplace Charges | Marketplace resource usage and fee details
+Usage Details | Resource usage and fee details
+
+#### Cost Management and Billing
 
 Microsoft recommends three approaches for tracking and managing costs within Azure.
 
-1. Organizing resources wtihin _Resource Groups_.
+1. Organizing resources within _Resource Groups_.
 1. Organizing resources by applying _Tags_.
 1. Organizing resources through multiple _Subscriptions_.
 
@@ -34,6 +103,21 @@ In larger enterprises, resources can also be further organized using Azure [mana
 
 Billing alerts can be added to a _Subscription_ through the account management page.  The alert will send a notification email when the selected billing total is exceded.
 
+[Azure Reservations](https://docs.microsoft.com/en-us/azure/billing/billing-save-compute-costs-reservations)
+
+>Azure Reservations help you save money by pre-paying for one-year or three-years of virtual machines, SQL Database compute capacity, Azure Cosmos DB throughput, or other Azure resources. Pre-paying allows you to get a discount on the resources you use.
+
+Other Tools For Cost Management
+
+- [Microsoft Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/)
+- [Microsoft Azure Advisor Cost Recommendations](https://docs.microsoft.com/en-us/azure/advisor/advisor-cost-recommendations)
+
+#### Tagging
+
+Tags are key/value pairs that function as additional metadata associated with Azure resources for easier management.  Tags be assigned both programmatically or through the portal.  
+
+When viewing the _Cost Analysis_ blade of the _Subscription_ service, resource costs can be filtered by tags.  Tags can provide a means of cost management in the Azure portal, but rely on diligently, and correctly, being assigned to resources.
+
 [Tagging Resources Using PowerShell](Tags/tags-powershell.md)
 
 [Tagging Resources Using Azure CLI](Tags/tags-cli.md)
@@ -42,9 +126,9 @@ Billing alerts can be added to a _Subscription_ through the account management p
 
 The Azure _Policy_ service can be used to create, manage, as assign policies across Azure subscriptions, resource groups, or specific resources.  Exclusions can also be defined that apply to specific nested resource groups or resources.
 
-A policy defines different rules and effects over resources, such as allowed geographic regions or required tags, so those resources stay compliant with business requirements or standards.  This is often referred to as _cloud governance_ and Azure policies are used to ensure enforement by controlling resource deployment and usage.
+A policy defines different rules and effects over resources, such as allowed geographic regions or required tags, so those resources stay compliant with business requirements or standards.  This is often referred to as _cloud governance_ and Azure policies are used to ensure enforcement by controlling resource deployment and usage.
 
-There are a number of pre-defined policies avaiable covering common requirements.  For more granular control over requirements, custom policies can be created.  Custom policies can be created manually, by copying and modifying an existing policy, or by importing a custom policy from an external source, such as GitHub.
+There are a number of pre-defined policies available covering common requirements.  For more granular control over requirements, custom policies can be created.  Custom policies can be created manually, by copying and modifying an existing policy, or by importing a custom policy from an external source, such as GitHub.
 
 A policy can have effects that are declared within the policy definition.
 
