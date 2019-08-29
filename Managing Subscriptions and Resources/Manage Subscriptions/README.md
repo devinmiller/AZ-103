@@ -43,6 +43,10 @@ Roles are assigned to
 
 Role inheritance flows down the hierarchy established for scopes.
 
+[Creating Custom Role Definition Using PowerShell](Roles/roles-powershell.md)
+
+[Create Custom Role Definitions Using Azure CLI](Role/roles-cli.md)
+
 ### Configure Cost Center Quotas and Tagging
 
 #### [Spending Limits](https://docs.microsoft.com/en-us/azure/billing/billing-spending-limit)
@@ -149,3 +153,21 @@ In larger enterprises, an Azure _Policy Initiative_ can be used to group multipl
 [Creating and Assigning Policies Using PowerShell](Policies/policies-powershell.md)
 
 [Creating and Assigning Policies Using Azure CLI](Policies/policies-cli.md)
+
+### Manage Microsoft Azure Resource Providers
+
+Resource providers enable Microsoft Azure features.  Most providers are automatically registered with a subscription, but occasionally new providers need to be registered to expose additional functionality.
+
+For example
+Registered Automatically | Not Registered Automatically
+--- | ---
+Microsoft.Network | Microsoft.PolicyInsights
+Microsoft.Sql | Microsoft.AzureActiveDirectory
+Microsoft.Storage | Microsoft.AzureStack
+Microsoft.Compute | Microsoft.Botservice
+
+Resource providers can be viewed in the _Subscription_ service in the _Resource Providers_ blade.
+
+[Managing Resource Providers Using PowerShell](Providers/providers-powershell.md)
+
+[Managing Resource Providers Using Azure CLI](Providers/providers-cli.md)

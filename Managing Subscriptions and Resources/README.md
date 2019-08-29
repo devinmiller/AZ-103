@@ -10,7 +10,7 @@ Training materials for the AZ-103 certification exam.
 - Configure cost center quotas and tagging
 - Configure Azure subscription policies at Azure subscription level
 
-### Analyze Resource Utilization and Consumption
+### [Analyze Resource Utilization and Consumption](Utilization%20and%20Consumption)
 
 - configure diagnostic settings on resources
 - create baseline for resources
