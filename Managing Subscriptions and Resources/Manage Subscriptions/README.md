@@ -20,7 +20,7 @@ Managing administrator permissions for Azure subscriptions is done through the _
 
 Role-based access control (RBAC) provides the ability to delegate the administration of Azure resources depending on security requirements.  Roles in Azure organize related resource permissions together.  For example, roles for managing virtual machines will have a different set of permissions than roles for managing storage accounts.
 
-This topic is covered in detail in the [Role Based Access Control (RBAC)](..\Manage%20Access%20Controll) section.
+This topic is covered in detail in the [Role Based Access Control (RBAC)](../Manage%20Access%20Control) section.
 
 ### Configure Cost Center Quotas and Tagging
 
