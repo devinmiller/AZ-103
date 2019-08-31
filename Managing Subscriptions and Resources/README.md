@@ -34,7 +34,7 @@ Training materials for the AZ-103 certification exam.
 - move resources across resource groups
 - remove resource groups
 
-### Managed role based access control (RBAC)
+### [Managed role based access control (RBAC)](Manage%20Access%20Control)
 
 - create a custom role
 - configure access to Azure resources by assigning roles

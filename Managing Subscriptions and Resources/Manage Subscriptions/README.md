@@ -10,42 +10,17 @@ Training materials for the AZ-103 certification exam.
 
 [Overview of the Azure Policy Service](https://docs.microsoft.com/en-us/azure/governance/policy/overview)
 
-[Azure Resource Manager Resource Provider Operations](https://docs.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations)
-
 ## Skills
 
 ### Assign Administrator Permissions
 
 Managing administrator permissions for Azure subscriptions is done through the _Subscriptions_ service under the _Access Control (IAM)_ option in the Azure portal.
 
-#### [Role-Based Access Control (RBAC)](https://docs.microsoft.com/en-us/azure/role-based-access-control/)
+#### Role-Based Access Control (RBAC)
 
-Role-based access control (RBAC) provides the ability to delegate the administration of Azure resources depending on security requirements.  Roles in Azure organize related resource permissions together.  For example, roles for managing virtual machines will have a different set of permissions than roles for managing storage accounts.  There are more than 60 built-in roles available, that vary depending the specific resource, but most fall into one of three categories.
+Role-based access control (RBAC) provides the ability to delegate the administration of Azure resources depending on security requirements.  Roles in Azure organize related resource permissions together.  For example, roles for managing virtual machines will have a different set of permissions than roles for managing storage accounts.
 
-Role Name | Description
---- | ---
-Owner | Manage resources and resource access
-Contributor | Manage resources but not resource access
-Reader | Read-only access
-
-Roles are applied to a scope
-
-1. Management Groups
-1. Subscription
-1. Resource Group
-1. Individual Resource
-
-Roles are assigned to
-
-1. Users
-1. Groups
-1. Service Principal
-
-Role inheritance flows down the hierarchy established for scopes.
-
-[Creating Custom Role Definition Using PowerShell](Roles/roles-powershell.md)
-
-[Create Custom Role Definitions Using Azure CLI](Role/roles-cli.md)
+This topic is covered in detail in the [Role Based Access Control (RBAC)](..\Manage%20Access%20Controll) section.
 
 ### Configure Cost Center Quotas and Tagging
 
