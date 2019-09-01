@@ -52,6 +52,14 @@ Using role based access control is a best practice, but requires work to impleme
 
 ### Create a Custom Role
 
+Only the Owner and User Access Administrator roles have permission to create custom roles.
+
+Use when existing roles don't meet your organization's needs.
+
+Can be shared across subscriptions.
+
+Each Azure AD instance can host up to 2000 custom roles.
+
 #### Management Operations
 
 Specified in the _Actions_ and _NotActions_ properties of a role definition.
@@ -71,6 +79,46 @@ For Example:
 - Read a list of blobs in a container
 - Write to a storage blob in a container
 - Delete a message in a queue
+
+#### Actions
+
+Specifies the managements operations that the role allows to be performed.  Collection of operations strings that identify securable operations or specific Azure resource providers.
+
+#### NotActions
+
+Specifies the management operations that are excluded from the allowed actions.  Used when it is simpler to exclude actions a principal can perform rather than instead of listing all the allowed actions.
+
+- NotActions _does not_ function as a deny rule
+- A principle in multiple roles, where one role has an operation in Actions, and NotActions in another, will be able to perform the the operation.
+
+#### DataActions
+
+Permissions for data operation that can be performed on data with the scope of the permission.
+
+- View a blob or a list of blobs
+- view message or message in a storage queue
+
+#### NotDataActions
+
+Data operations that are excluded from DataActions.  Used when it is simpler to exclude actions a principal can perform rather than instead of listing all the allowed actions.
+
+- NotDataActions _does not_ function as a deny rule
+- A principle in multiple roles, where one role has an operation in DataActions, and NotDataActions in another, will be able to perform the the operation.
+
+#### AssignableScopes
+
+Specifies the scope where the role can be assigned.  Makes the role only available in subscriptions or resource groups that will use it, and not visible in subscriptions or resource groups that will not.
+
+#### Validatoin
+
+Why validate custom roles?
+
+- Role may be under-permissioned
+  - Principals can't perform the tasks that they need to perform
+  - Processes associated with principals fail because they cannot complete
+- Role may be over-permissioned
+  - Principals can perform tasks that they shouldn't be able to perform
+  - Presents a security risk
 
 [Creating Custom Role Definition Using PowerShell](Roles/roles-powershell.md)
 
@@ -171,3 +219,40 @@ Azure Policies control the specifics of what is done at a particular scope
 
 - Which VM SKUs can be deployed
 - How resources such as VMs are named
+
+#### Common RBAC Issues
+
+- Overpermissioning
+  - A user or group is given more permissions that is necessary to a resource
+  - Evident when a user or members of a group are able to perform tasks they should not be able to perform
+  - Also happens when principals are assigned an inappropriate role
+  - Happens when a custom role is incorrectly configured
+
+- Underpermissioning
+  - A user, group, or service principal is given fewer permissions that is necessary for a resource
+  - Evident when a user, group member, or service principal is unable to perform a task that they should be able to perform
+  - Happens when users are assigned an inappropriate role
+  - Happens when a custom role is incorrectly configured
+
+- Too broad a scope
+  - A user, group or service principal has permissions to resources they should not have been assigned
+  - Need to ensure that resources are in appropriate resource groups
+  - Organizations are increasingly moving sensitive securables into separate subscriptions and even using separate management groups to meet compliance requirements
+
+- Too narrow a scope
+  - A user, group or service principal has appropriate permissions to some resources but not all the resources required for their task
+  - Can happen when resources associated with a workload are spread across multiple resource groups or subscriptions
+
+- RBAC Changes Not Detected
+  - Azure Resource Manager sometimes caches configurations and data to improve performance
+  - When creating or deleting role assignments, it can take up to 30 minutes for changes to take effect
+  - If using the Azure portal, Azure PowerShell, or Azure CLI, you can force a refresh of role assignment changes by signing out and signing in
+  - If making role assignment changes with REST API calls, you can force a refresh by refreshing the access token
+
+#### RBAC Tips and Tricks
+
+- Avoid role assignments at the resource level
+- Use built in roles where possible
+- Assign access to groups and not users
+- Avoid using microsoft accounts
+- Use RBAC with Service Principals
