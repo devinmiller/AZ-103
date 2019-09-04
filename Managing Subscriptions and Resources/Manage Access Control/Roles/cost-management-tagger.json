@@ -1,0 +1,28 @@
+{
+    "Name":  "Cost Management Tagger",
+    "IsCustom":  true,
+    "Description":  "Can view costs, manage cost configuration, and manage resource tags",
+    "Actions":  [
+                    "Microsoft.Resources/tags/*",
+                    "Microsoft.Consumption/*",
+                    "Microsoft.CostManagement/*",
+                    "Microsoft.Resources/subscriptions/read",
+                    "Microsoft.Resources/subscriptions/resourceGroups/read",
+                    "Microsoft.Support/*",
+                    "Microsoft.Advisor/configurations/read",
+                    "Microsoft.Advisor/recommendations/read",
+                    "Microsoft.Management/managementGroups/read"
+                ],
+    "NotActions":  [
+
+                   ],
+    "DataActions":  [
+
+                    ],
+    "NotDataActions":  [
+
+                       ],
+    "AssignableScopes":  [
+                             "/subscriptions/feb724cb-b940-48a8-87d9-7b4a4771419e/"
+                         ]
+}
