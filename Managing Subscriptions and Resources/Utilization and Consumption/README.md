@@ -12,6 +12,22 @@ Training materials for the AZ-103 certification exam.
 
 >Azure Monitor is based on a common monitoring data platform that includes Logs and Metrics. Collecting data into this platform allows data from multiple resources to be analyzed together using a common set of tools in Azure Monitor.
 
+[Azure Monitor Data Platform](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform)
+
+>Azure Monitor collects and aggregates data from a variety of sources into a common data platform where it can be used for analysis, visualization, and alerting. It provides a consistent experience on top of data from multiple sources, which gives you deep insights across all your monitored resources and even with data from other services that store their data in Azure Monitor
+
+[Overview of Alerts in Microsoft Azure](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-overview)
+
+>Alerts proactively notify you when important conditions are found in your monitoring data. They allow you to identify and address issues before the users of your system notice them.
+
+[Create and manage action groups](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/action-groups)
+
+>An action group is a collection of notification preferences defined by the owner of an Azure subscription. Azure Monitor and Service Health alerts use action groups to notify users that an alert has been triggered.
+
+[Metrics in Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform-metrics)
+
+>Metrics in Azure Monitor are lightweight and capable of supporting near real-time scenarios making them particularly useful for alerting and fast detection of issues.
+
 ## Introduction
 
 What is Azure Monitor?
@@ -128,13 +144,118 @@ The simplified authoring process no longer requires knowing the monitoring sourc
 
 ### Analyze Metrics Across Subscription
 
+#### What are metrics
+
+- Numerical values that describe some aspect of a system at a particular point in time
+- Lightweight and capable of supporting near real-time scenarios
+- Useful for alerting because they can be sampled frequently
+
+#### Metric Value Attributes
+
+- Collection at one minute intervals unless specified otherwise in the metrics definition
+- Uniquely identified by a metric name and a metric namespace that acts as a category
+- Stored for 93 days unless copied to _Log Analytics_ for long term trending
+
+#### Metric Value Properties
+
+- The _Time_ the value was collected
+- The _Type_ of measurement the value represents
+- The _Resource_ with which the value is associated
+- The _Value_ itself
+
+Some metrics may have multiple dimensions (such as custom metrics).
+
+#### Source of Metric Data
+
+There are three fundamental sources of metrics collected by Azure Monitor.  All of these metrics are available in the metrics store where they can be evaluated together regardless of their source.
+
+- **Platform Metrics**
+  - Created by Azure resources and give visibility into their health and performance
+  - Collected from Azure resources at one-minute frequency unless specified otherwise
+- **Guest OS Metrics**
+  - Collected from the guest operating system of a virtual machine
+- **Application Metrics**
+  - Created by Application Insights for monitored applications
+  - Help detect performance issues and track trends in how applications are being used
+- **Custom Metrics**
+  - User defined metrics in addition to the standard metrics that are automatically available
+
+#### Using Metrics Data
+
+- **Analyze**
+  - Use metrics explorer to analyze collected metrics on a chart and compare metrics from different resources
+- **Visualize**
+  - Pin a chart from metrics explorer to an Azure dashboard
+  - Create a workbook to combine with multiple sets of data in an interactive report
+- **Alert**
+  - Configure a metric alert rule that sends a notification or takes automated action when the metric value crosses a threshold
+- **Automate**
+  - Use Autoscale to increase or decrease resources based on a metric value crossing a threshold
+- **Export**
+  - Route Metrics to Logs to analyze data in Azure Monitor Metrics together with data in Azure Monitor Logs
+  - Stream Metrics to an Event Hub to route them to external systems
+- **Retrieve**
+  - Access metric values from a command line using PowerShell
+  - Access metric values from custom application using REST
+  - Access metric values from a command line using CLI
+- **Archive**
+  - Archive the performance or health history of resources for compliance, auditing, or offline reporting purposes
+
 ### Create Action Groups
 
 An action group is a collection of notification preferences defined by the owner of an Azure subscription. Azure Monitor and Service Health alerts use action groups to notify users that an alert has been triggered.
 
+There are three properties that define an action
+
+- Name
+  - A unique identifier within the action group
+- Action Type
+  - The action performed.
+- Details
+  - The corresponding details that vary by action type.
+
+There are a variety of actions types available to action groups.
+
+- Automation Runbook
+- Push Notification
+- Email
+- Function App
+- ITSM
+- Logic App
+- SMS
+- Voice
+- Webhook
+
 ### Monitor for Unused Resources
 
 ### Monitor Spend
+
+There are two options available understand your Azure bill
+
+#### Option 1: Compare your invoice with the detailed daily usage file
+
+The detailed usage CSV file shows your charges by billing period and daily usage.  Usage charges are displayed at the meter level. The following terms mean the same thing in both the invoice and the detailed usage file.
+
+Invoice (PDF) | Detailed Usage (CSV)
+--- | ---
+Billing Cycle | Billing Period
+Name | Meter Category
+Type | Meter Subcategory
+Resource | Meter Name
+Region | Meter Region
+Consumed | Consumed Quantity
+Included | Included Quantity
+Billable | Overage Quantity
+
+[Understand Your Azure Invoice](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-invoice)
+
+[Understand Your Azure Detailed Usage](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-invoice)
+
+#### Option 2: With cost management reports in the Azure portal
+
+The Azure portal can also help verify charges. To get a quick overview of invoiced usage and charges, view the cost management charts.
+
+[Monitor Cost Breakdown and Burn Rate](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started#costs)
 
 ### Report on Spend
 
