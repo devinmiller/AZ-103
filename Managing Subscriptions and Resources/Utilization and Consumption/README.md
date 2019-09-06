@@ -28,6 +28,10 @@ Training materials for the AZ-103 certification exam.
 
 >Metrics in Azure Monitor are lightweight and capable of supporting near real-time scenarios making them particularly useful for alerting and fast detection of issues.
 
+[Logs in Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-platform-logs)
+
+>Logs in Azure Monitor are especially useful for performing complex analysis across data from a variety of sources.
+
 ## Introduction
 
 What is Azure Monitor?
@@ -236,17 +240,6 @@ There are two options available understand your Azure bill
 
 The detailed usage CSV file shows your charges by billing period and daily usage.  Usage charges are displayed at the meter level. The following terms mean the same thing in both the invoice and the detailed usage file.
 
-Invoice (PDF) | Detailed Usage (CSV)
---- | ---
-Billing Cycle | Billing Period
-Name | Meter Category
-Type | Meter Subcategory
-Resource | Meter Name
-Region | Meter Region
-Consumed | Consumed Quantity
-Included | Included Quantity
-Billable | Overage Quantity
-
 [Understand Your Azure Invoice](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-invoice)
 
 [Understand Your Azure Detailed Usage](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-invoice)
@@ -260,5 +253,36 @@ The Azure portal can also help verify charges. To get a quick overview of invoic
 ### Report on Spend
 
 ### Utilize Log Search Query Functions
+
+#### What are log analytics
+
+Log data collected by _Azure Monitor_ is store in a _Log Analytics_ workspace, which is based on _Azure Data Explorer_.  It collects telemetry from a variety of resources and uses the query language from _Data Explorer_ to retrieve and analyze data.
+
+#### What are log queries
+
+A log query is required to retrive any data from _Log Analytics_.  Whether anayizing data in the portal, configuring an alert rule, or retrieving data through the API, a query will be used to specify the required data.
+
+#### Where are log queries used
+
+- Portals
+- Alert Rule
+- Dashboards
+- Views
+- Export
+- PowerShell
+- Log Analytics API
+
+#### How log analytics data is organized
+
+- When you build a query, start by determining which tables have the data that is needed
+- Many queries will only require data from a single table, but other may use a variety of options to include data from multiple tables
+- Application Insights stores aplication data such as requests, exceptions, traces, and usage in Log Analytics
+- Same query language used to access this data but must use the Application Insights console or Application Insights REST API to access it
+
+#### Using function in log analytics
+
+- To use a log analytics query with another query you can save it as a function
+- Simplify complex queries by breaking them into parts
+- Allows you to reuse common code with multiple queries
 
 ### View Alerts in Log Analytics
