@@ -260,29 +260,49 @@ Log data collected by _Azure Monitor_ is store in a _Log Analytics_ workspace, w
 
 #### What are log queries
 
-A log query is required to retrive any data from _Log Analytics_.  Whether anayizing data in the portal, configuring an alert rule, or retrieving data through the API, a query will be used to specify the required data.
+A log query is required to retrieve any data from _Log Analytics_.  Whether analyzing data in the portal, configuring an alert rule, or retrieving data through the API, a query will be used to specify the data.
 
 #### Where are log queries used
 
 - Portals
+  - Perform interactive analysis of log data within the Azure Portal
+  - Allows for editing of query and analyzing of results in a variety of formats and visualizations
 - Alert Rule
+  - Proactively identify issues from data in the workspace
+  - Based on a log search that is automatically run at regular intervals
 - Dashboards
+  - Can pin the results of any query into an Azure dashboard
+  - Visual log and metric data together and optionally share with other Azure users
 - Views
+  - Create visualizations of data to be included in user dashboards with view designer
+  - Log queries provide the data used by tiles and visualization parts in each view
 - Export
+  - Import data from Log Analytics workspace into Excel or Power BI by creating a log query defining the data to export
 - PowerShell
+  - Run a script from a command-line or an Azure Automation runbook that uses log queries to retrieve data from log analytics
 - Log Analytics API
+  - Retrieve log data rom the workspace using any REST API client
+  - Includes a query that is run against Log Analytics to determine the data to retrieve
 
 #### How log analytics data is organized
 
 - When you build a query, start by determining which tables have the data that is needed
+  - Different types of data are separated into dedicated tables and each Azure Log Analytics workspace
+  - Documentation for different data sources include the name of the data type that it creates and a description of each of its properties
 - Many queries will only require data from a single table, but other may use a variety of options to include data from multiple tables
-- Application Insights stores aplication data such as requests, exceptions, traces, and usage in Log Analytics
-- Same query language used to access this data but must use the Application Insights console or Application Insights REST API to access it
+- Application Insights stores application data such as requests, exceptions, traces, and usage in Log Analytics
+  - Stored in a different partition than other log data
+  - Same query language to access this data, but must use the Application Insights console or REST API to access it
+  - Cross resource queries can be used to combine Application Insights data with other data in Log Analytics
 
 #### Using function in log analytics
 
-- To use a log analytics query with another query you can save it as a function
+- A Log Analytics query can be used in another query when saved as a function
 - Simplify complex queries by breaking them into parts
 - Allows you to reuse common code with multiple queries
+- A function in Log Analytics cannot contain another function
+- Saving a function is possible in Log Analytics queries, but not currently for Application Insights queries
 
 ### View Alerts in Log Analytics
+
+To view alerts from Log Analytics navigate to the Log Analytics portal and select _Alerts_ option underneath _Monitoring_
