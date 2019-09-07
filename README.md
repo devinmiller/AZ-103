@@ -35,7 +35,12 @@ Training materials for the AZ-103 certification exam.
 >This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
 
 [Define Resources in Azure Resource Manager Templates](https://docs.microsoft.com/en-us/azure/templates/)
+
 >When creating Resource Manager templates, you need to understand what resource types are available, and what values to use in your template. The Resource Manager template reference documentation simplifies template development by providing these values.
+
+[Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates)
+
+>Azure Quickstart Templates
 
 ### Training
 
