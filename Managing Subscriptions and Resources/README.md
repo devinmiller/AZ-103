@@ -24,7 +24,7 @@ Training materials for the AZ-103 certification exam.
 - utilize Log Search query functions
 - view alerts in Log Analytics
 
-### Manage Resource Groups
+### [Manage Resource Groups](Manage%20Resource%20Groups)
 
 - use Azure policies for resource groups
 - configure resource locks
