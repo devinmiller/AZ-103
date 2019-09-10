@@ -55,3 +55,14 @@ PS C:\> az group lock list --resource-group "az-web-prod-rg"
 ``` powershell
 PS C:\> az group lock create --name "WebNoDelete" --lock-type CanNotDelete --resource-group "az-web-prod-rg"
 ```
+
+### [az resource move](https://docs.microsoft.com/en-us/cli/azure/resource?view=azure-cli-latest#az-resource-move)
+
+>Moves resources from one resource group to another(can be under different subscription).
+
+**Example 1:** Move a resource to another resource group
+
+```` powershell
+PS C:\> $ResourceId = az resource show --resource-group plaz-net2-rg --name vnet1 --resource-type "Microsoft.Network/virtualNetworks" --query id --output tsv
+PS C:\> az resource move --destination-group plaz-net-rg --id $ResourceId
+```

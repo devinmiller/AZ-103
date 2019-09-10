@@ -85,4 +85,11 @@ Azure resource tags logically organize resources.  Each tag has a name and a val
 
 ### Move Resources Across Resource Groups
 
+- Not all resources can be moved, verify first
+- Can move resources to a resource group in a different location
+- Can create the new resource group at the same time as the move
+
 ### Remove Resource Groups
+
+- Deleting a resource group deletes all of the resources inside of it, permanently
+  - This is why locks can be helpful

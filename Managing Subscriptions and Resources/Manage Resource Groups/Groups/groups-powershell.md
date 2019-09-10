@@ -55,3 +55,14 @@ PS C:\> Get-AzResourceLock -ResourceGroupName "az-web-prod-rg"
 ``` powershell
 PS C:\> New-AzResourceLock -LockName "WebNoDelete" -LockLevel CanNotDelete -ResourceGroupName "az-web-prod-rg"
 ```
+
+### [Move-AzResource](https://docs.microsoft.com/en-us/powershell/module/az.resources/move-azresource?view=azps-2.6.0)
+
+>Moves a resource to a different resource group or subscription.
+
+**Example 1:** Move a resource to another resource group
+
+``` powershell
+PS C:\> $Resource = Get-AzResource -ResourceGroupName plaz-net2-rg -ResourceName vnet1
+PS C:\> Move-AzResource -DestinationResourceGroupName plaz-net-rg -ResourceId $Resource.Id
+```
