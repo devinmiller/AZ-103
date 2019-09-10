@@ -2,13 +2,21 @@
 
 Commands for managing policies and policy definitions using Azure CLI.
 
-## Commands
+## Policiy Definitions Commands
 
 ### [az policy definition show](https://docs.microsoft.com/en-us/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-show)
 
 >Show a policy definition.
 
-**Example 1:** Get a policy definition by name
+#### Parameters
+
+##### _--name_
+
+>The policy definition name.
+
+#### Examples
+
+Get a policy definition by name
 
 ``` powershell
 PS C:\> az policy definition show --name '0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56'
@@ -18,13 +26,15 @@ PS C:\> az policy definition show --name '0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56'
 
 >List policy definitions.
 
-**Example 1:** Get a policy definition by display name
+#### Examples
+
+Get a policy definition by display name
 
 ``` powershell
 PS C:\> az policy definition list --query "[?displayName=='Require specified tag']"
 ```
 
-**Example 2:** Search a list of policy definition by display name
+Search a list of policy definition by display name
 
 ``` powershell
 PS C:\> az policy definition list --query "[?displayName != null && contains(displayName, 'tag')].{Key:name, Name:displayName, PolicyType:policyType}" --output table
@@ -34,27 +44,63 @@ PS C:\> az policy definition list --query "[?displayName != null && contains(dis
 
 >Create a policy definition.
 
-**Example 1:** Create a custom policy definition
+#### Parameters
+
+##### _--name_
+
+>Name of the new policy definition.
+
+##### _--display-name_
+
+>Display name of policy definition.
+
+##### _--rules_
+
+>Policy rules in JSON format, or a path to a file containing JSON rules.
+
+##### _--params_
+
+>JSON formatted string or a path to a file or uri with parameter definitions.
+
+#### Examples
+
+Create a custom policy definition
 
 ``` powershell
 PS C:\> az policy definition create --name "-Default tag and value" --rules "C:\policy-rule.json"
 ```
 
-**Example 2:** Create a custom policy definition with metadata
+Create a custom policy definition with metadata
 
 ``` powershell
 PS C:\> az policy definition create --name "-Default tag and value" --rules "C:\policy-rule.json" --metadata category="Cost Management"
 ```
 
-**Example 3:** Create a custom policy definition with parameters
+Create a custom policy definition with parameters
 
 ``` powershell
 PS C:\> az policy definition create --name "-Default tag and value" --rules "C:\policy-rule-params.json" --params '{\"tag\": { \"type\":\"string\" }, \"value\": { \"type\":\"string\" } }'
 ```
 
+## Policy Assignment Commands
+
 ### [az policy assignment show](https://docs.microsoft.com/en-us/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-show)
 
 >Show a resource policy assignment.
+
+#### Parameters
+
+##### _--name_
+
+>Name of the policy assignment.
+
+##### _--resource-group_
+
+>The resource group where the policy will be applied.
+
+#### Examples
+
+View a resource policy assignment
 
 ``` powershell
 PS C:\> az policy assignment show --name AppendDevEnvTag --resource-group az-dev-web-rg
@@ -64,7 +110,15 @@ PS C:\> az policy assignment show --name AppendDevEnvTag --resource-group az-dev
 
 >List resource policy assignments.
 
-**Example 1:** Get a policy assignment by name on resource group _az-prod-web-rg_
+#### Parameters
+
+##### _--resource-group_
+
+>The resource group where the policy will be applied.
+
+#### Examples
+
+Get a policy assignment by name on resource group _az-prod-web-rg_
 
 ``` powershell
 PS C:\> az policy assignment list --resource-group az-prod-web-rg
@@ -74,7 +128,31 @@ PS C:\> az policy assignment list --resource-group az-prod-web-rg
 
 >Create a resource policy assignment.
 
-**Example 1:** Create a new policy assignment scoped to resource group _az-prod-web-rg_
+#### Parameters
+
+##### _--name_
+
+>Name of the new policy assignment.
+
+##### _--display-name_
+
+>Display name of the policy assignment.
+
+##### _--scope_
+
+>Scope to which this policy assignment applies.
+
+##### _--policy_
+
+>Name or id of the policy definition.
+
+##### _--params_
+
+>JSON formatted string or a path to a file or uri with parameter values of the policy rule.
+
+#### Examples
+
+Create a new policy assignment scoped to resource group _az-prod-web-rg_
 
 ``` powershell
 PS C:\> $ResourceGroup = az group show --name az-prod-web-rg --query id

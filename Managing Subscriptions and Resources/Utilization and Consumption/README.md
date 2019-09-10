@@ -67,6 +67,16 @@ Six Azure Monitor services
 
 ### Create Baseline for Resources
 
+A "baseline" is a configuration management term that signifies an agreed-upon description of product attributes, per unit time, which serves as a basis for defining change.
+
+In other words, it is recommended to develop a baseline of Azure applicatuin and service performance. Gather detailed diagnostics for a long enough time to capture peaks and valleys over ordinary usage.
+
+Azure Diagnostic Log Types
+
+- Application Logs
+- Diagnostic Logs
+- Activity Logs
+
 ### Create and Rest Alerts
 
 #### What Are Alerts
