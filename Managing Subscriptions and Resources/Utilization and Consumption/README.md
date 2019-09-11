@@ -65,11 +65,22 @@ Six Azure Monitor services
 
 ### Configure Diagnostic Settings on Resources
 
+To configure diagnostics on a resource navigate to the _Diagnostics settings_ tab in the _Monitoring_ section of the resource navigation pane.
+
+To configure metrics on a resource navigate to the _Metrics_ tab in the monitoring section of the resource navigation pane.
+
 ### Create Baseline for Resources
 
 A "baseline" is a configuration management term that signifies an agreed-upon description of product attributes, per unit time, which serves as a basis for defining change.
 
-In other words, it is recommended to develop a baseline of Azure applicatuin and service performance. Gather detailed diagnostics for a long enough time to capture peaks and valleys over ordinary usage.
+In other words, it is recommended to develop a baseline of Azure application and service performance. Gather detailed diagnostics for a long enough time to capture peaks and valleys over ordinary usage.
+
+There is not a particular tool used for creating a baseline in Azure, but is instead a series of steps.
+
+- Support continuous monitoring by enabling diagnostics and telemetry on resources
+- Use the data collected from continuous monitoring to define the normal operational parameters
+- Create alert conditions so deviations from the normal parameters trigger notifications
+- Configure Azure to take proactive actions when deviations are encountered
 
 Azure Diagnostic Log Types
 
@@ -77,7 +88,7 @@ Azure Diagnostic Log Types
 - Diagnostic Logs
 - Activity Logs
 
-### Create and Rest Alerts
+### Create and Test Alerts
 
 #### What Are Alerts
 
@@ -156,7 +167,13 @@ The simplified authoring process no longer requires knowing the monitoring sourc
 
 ### Analyze Alerts Across Subscription
 
+To view alerts for a subscription, go to _Monitor_ and select _Alerts_ from the navigation pane.  This will open a blade displaying all alerts.  All alerts can also be configured from this page from the _Manage alert rules_ link.
+
+To view alerts for a resource group, go to the resource group and select _Alerts_ from the _Monitoring_ section of the navigation pane.
+
 ### Analyze Metrics Across Subscription
+
+To quickly view metrics, go to _Monitor_ and select _Metrics_ from the navigation pane.
 
 #### What are metrics
 
@@ -315,4 +332,4 @@ A log query is required to retrieve any data from _Log Analytics_.  Whether anal
 
 ### View Alerts in Log Analytics
 
-To view alerts from Log Analytics navigate to the Log Analytics portal and select _Alerts_ option underneath _Monitoring_
+To view alerts from Log Analytics go to _Log Analytics_ and select _Alerts_ from the _Monitoring_ section in the navigation pane.
