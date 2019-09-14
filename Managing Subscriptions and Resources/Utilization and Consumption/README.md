@@ -261,6 +261,12 @@ There are a variety of actions types available to action groups.
 
 ### Monitor Spend
 
+The costs associated with an Azure subscription can be viewed in _Cost Management + Billing - Overview_.  This will present a list of subscriptions and the current accumulated cost for each.
+
+To view a detailed cost breakdown, select a subscription and then select _Cost Analysis_ from the _Cost Management_ section of the navigation pane.  From _Cost Analysis_, the cost of the selected subscription can be broken down by location, resource group, tags, indeividual services, other a variety of other available metrics.
+
+[Quickstart: Explore and Analyze Costs with Cost Analysis](https://docs.microsoft.com/en-us/azure/cost-management/quick-acm-cost-analysis)
+
 There are two options available understand your Azure bill
 
 #### Option 1: Compare your invoice with the detailed daily usage file
@@ -279,11 +285,26 @@ The Azure portal can also help verify charges. To get a quick overview of invoic
 
 ### Report on Spend
 
+Much like monitoring spend, reporting on spend can be accomplished through _Cost Analysis_.  Again, to view  _Cost Analysis_, go to _Cost Management + Billing - Overview_, select a subscription, then select _Cost Analysis_ from the _Cost Management_ section of the navigation pane.  
+
+There are a few best practices to ensure accurate reporting on spend.
+
+- Organize related resources into resource groups based on business needs (project, department, etc)
+- Consistenly apply tags to resources will help provide detailed filtering in _Cost Analysis_
+
 ### Utilize Log Search Query Functions
 
 #### What are log analytics
 
 Log data collected by _Azure Monitor_ is store in a _Log Analytics_ workspace, which is based on _Azure Data Explorer_.  It collects telemetry from a variety of resources and uses the query language from _Data Explorer_ to retrieve and analyze data.
+
+A _Log Analytics_ workspace is a effectively a data warehouse.  It is a repository from which you pipeline Azure workloads in order to write log queries through a single front end.
+
+Azure _Monitor_ still acts as a single unifying monitoring experience from which Azure _Log Analytics_ data can be queried.  
+
+#### What are management solutions
+
+A management solution encompasses several technologies
 
 #### What are log queries
 
