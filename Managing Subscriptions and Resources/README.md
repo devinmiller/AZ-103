@@ -6,9 +6,9 @@ Training materials for the AZ-103 certification exam.
 
 ### [Manage Azure Subscriptions](Manage%20Subscriptions/)
 
-- Assign administrator permissions
-- Configure cost center quotas and tagging
-- Configure Azure subscription policies at Azure subscription level
+- assign administrator permissions
+- configure cost center quotas and tagging
+- configure Azure subscription policies at Azure subscription level
 
 ### [Analyze Resource Utilization and Consumption](Utilization%20and%20Consumption)
 

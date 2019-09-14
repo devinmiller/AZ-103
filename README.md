@@ -5,7 +5,7 @@ Training materials for the AZ-103 certification exam.
 ## Skills
 
 - **[Manager Azure Subscriptions and Resources (_15-20%_)](Managing%20Subscriptions%20and%20Resources/)**
-- **Implement and manage storage (_15-20%_)**
+- **[Implement and Manage Storage (_15-20%_)]()**
 - **Deploy and manage virtual machines (VMs) (_15-20%_)**
 - **Configure and manage virtual networks (_30-35%_)**
 - **Manage identities (_15-20%_)**

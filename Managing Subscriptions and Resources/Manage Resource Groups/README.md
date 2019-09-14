@@ -60,7 +60,7 @@ Resource locks prevent accidental deletion or changes to resources in resource g
 
 ### Configure Resource Policies
 
-More on configuring policies can be found under [Configure Azure Subscription Policies at Azure Subscription Level](..\Manage%20Subscriptions\README.MD#Configure%20Azure%20Subscription%20Policies%20at%20Azure%20Subscription%20Level)
+More on configuring policies can be found under [Configure Azure Subscription Policies at Azure Subscription Level](../Manage%20Subscriptions/README.MD#Configure%20Azure%20Subscription%20Policies%20at%20Azure%20Subscription%20Level)
 
 ### Identify Auditing Requirements
 
