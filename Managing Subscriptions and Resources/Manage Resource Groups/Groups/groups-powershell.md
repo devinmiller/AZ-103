@@ -8,7 +8,25 @@ Commands for creating and managing resource groups using PowerShell
 
 >Gets resource groups.
 
-**Example 1:** View the tags for a resource group
+#### Parameters
+
+##### _-Name_
+
+>Specifies the name of the resource group to get. This parameter supports wildcards at the beginning and/or the end of the string.
+
+##### _-Location_
+
+>Specifies the location of the resource group to get.
+
+#### Examples
+
+Get a resource group
+
+``` powershell
+PS C:\> Get-AzResourceGroup -Name "az-web-prod-rg"
+```
+
+Get a resource group and list the tags
 
 ``` powershell
 PS C:\> (Get-AzResourceGroup -Name "az-web-prod-rg").Tags
@@ -18,17 +36,51 @@ PS C:\> (Get-AzResourceGroup -Name "az-web-prod-rg").Tags
 
 >Creates an Azure resource group.
 
-**Example 1**: Create a new resource group
+#### Parameters
+
+##### _-Name_
+
+>Specifies a name for the resource group.
+
+##### _-Location_
+
+>Specifies the location of the resource group.
+
+##### _-Tag_
+
+>Key-value pairs in the form of a hash table.
+
+#### Examples
+
+Create a new resource group
 
 ``` powershell
 PS C:\> New-AzResourceGroup -Name "az-web-prod-rg" -Location "westus"
+```
+
+Create a new resource group with tags
+
+``` powershell
+PS C:\> New-AzResourceGroup -Name "az-web-prod-rg" -Location "westus" -Tag @{Envrionment="Development"l Department="IT"}
 ```
 
 ### [Set-AzResourceGroup](https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azresourcegroup?view=azps-2.6.0)
 
 >Modifies a resource group.
 
-**Example 1**: Add tags to an existing resource group
+#### Parameters
+
+##### _-Name_
+
+>Specifies the name of the resource group to modify.
+
+##### _-Tag_
+
+>Key-value pairs in the form of a hash table.
+
+#### Examples
+
+Add tags to an existing resource group
 
 ``` powershell
 PS C:\> Set-AzResourceGroup -Name "az-web-prod-rg" -Tags @{Dept=IT; Owner="SusanBerlin"}

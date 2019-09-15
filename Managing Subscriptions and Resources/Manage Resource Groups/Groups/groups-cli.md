@@ -8,27 +8,75 @@ Commands for creating and managing resource groups using Azure CLI
 
 >Gets a resource group.
 
-**Example 1:** View the tags for a resource group
+#### Parameters
+
+##### _--name_, _--resource-group_, _-g_, _-n_
+
+>Name of resource group.
+
+#### Examples
+
+Get a resource group
 
 ``` powershell
-PS C:\> az group show --name "az-web-prod-rg" --query tags
+PS C:\> az group show -n "az-web-prod-rg"
+```
+
+Get a resource group and list tags
+
+``` powershell
+PS C:\> az group show -n "az-web-prod-rg" --query tags
 ```
 
 ### [az group create](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az-group-create)
 
 >Create a new resource group.
 
-**Example 1**: Create a new resource group named _az-web-prod-rg_
+#### Parameters
+
+##### _--location_, _-l_
+
+>Location.
+
+##### _--name_, _--resource-group_, _-g_, _-n_
+
+>Name of resource group.
+
+##### _--tags_
+
+>Space-separated tags in 'key[=value]' format.
+
+#### Examples
+
+Create a new resource group
 
 ``` powershell
-PS C:\> az group create --name "az-web-prod-rg" --location "westus"
+PS C:\> az group create -n "az-web-prod-rg" -l "westus"
+```
+
+Create a new resource group with tags
+
+``` powershell
+PS C:\> az group create -n "az-web-prod-rg" -l "westus" --tags "Environment=Development" "Department=IT"
 ```
 
 ### [az group update](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az-group-update)
 
 >Update a resource group.
 
-**Example 1**: Add tags to an existing resource group
+#### Parameters
+
+##### _--name_, _--resource-group_, _-g_, _-n_
+
+>Name of resource group.
+
+##### _--set_
+
+>Update an object by specifying a property path and value to set.
+
+#### Examples
+
+Add tags to an existing resource group
 
 ``` powershell
 PS C:\> az group update --name "az-web-prod-rg" --set tags.Dept="IT" tags.Owner="SusanBerlin"
