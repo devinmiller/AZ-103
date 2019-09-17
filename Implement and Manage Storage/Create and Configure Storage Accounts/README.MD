@@ -85,7 +85,31 @@ A storage account is the top level container for various storage services in Azu
 
 These can be configured with security, authentication, and authorization.  A custom domain name can be applied to the blob service endpoint, but this does not currently support HTTPS.  It's possible to use a content delivery network to access blobs over HTTPS from a custom domain.
 
-### Choosing a Storage Account Type
+### Storage Account Pricing Factors
+
+There cost for storage is determined by the storage settings chosen, and the number of operations (read, write, etc.) performed during the billing period.  The billable operations vary based on the selected storage account type.
+
+Settings that affect storage costs include:
+
+- Region ( West US vs East US)
+- Access Tier (Hot, Cool, Archive)
+- Redundancy Type (LRS, ZRS, GRS)
+- Performance Tier (Standard vs Premium)
+- Capacity (100GB vs 1000GB)
+
+For details on operation pricing, the Azure pricing calculator is a good resource for up to date information.
+
+[Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/)
+
+### Data Transfer Options
+
+There is no charge for uploading data into Azure, but there are per gigabyte charges when data is read or downloaded out of an Azure region.  
+
+## Skills
+
+### Configure Network Access to the Storage Account
+
+### Create and Configure Storage Account
 
 An Azure Storage account provides a unique namespace to store and access Azure Storage data objects.  All objects in a storage account are billed together as a group.
 
@@ -118,6 +142,12 @@ Storage Account Types:
 - File Storage
 
 The General Purpose V1, General Purpose V2, and Blob Storage accounts are available on standard storage backed hard disk drive.  The Block Blob Storage and File Storage accounts are available on premium storage backed by solid state drives.
+
+Storage accounts can be created with the Azure portal from the _Storage Accounts_ page.
+
+[Manage Storage Accounts Using PowerShell](storage-powershell.md)
+
+[Manage Storage Accounts Using Azure CLI](storage-cli.md)
 
 #### General Purpose V2
 
@@ -205,43 +235,79 @@ Support Services:
 
 Premium files shares provide consistent high performance and low latency.  Includes IOPS bursting feature, providing up to three times the input/output operations per seconds.  Based on a credit system that builds credits when the file share isn't meeting it's base IOPS usage.
 
-### Creating a Storage Account with the Azure Portal
-
-Storage accounts can be created with the Azure portal from _Storage Accounts_.
-
-### Creating a Storage Account with the Azure CLI
-
-### Storage Account Pricing Factors
-
-There cost for storage is determined by the storage settings chosen, and the number of operations (read, write, etc.) performed during the billing period.  The billable operations vary based on the selected storage account type.
-
-Settings that affect storage costs include:
-
-- Region ( West US vs East US)
-- Access Tier (Hot, Cool, Archive)
-- Redundancy Type (LRS, ZRS, GRS)
-- Performance Tier (Standard vs Premium)
-- Capacity (100GB vs 1000GB)
-
-For details on operation pricing, the Azure pricing calculator is a good resource for up to date information.
-
-[Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/)
-
-### Data Transfer Options
-
-There is no charge for uploading data into Azure, but there are per gigabyte charges when data is read or downloaded out of an Azure region.  
-
-## Skills
-
-### Configure Network Access to the Storage Account
-
-### Create and Configure Storage Account
-
 ### Generate Shared Access Signature
+
+A Shared Access Signature (SAS) is a security token string that can be attached to a url to an Azure resource.  Contains permissions and a range of time for which access is valid.
+
+Types of Shared Access Signatures
+
+- Service Level SAS
+  - Delegate access to a single storage storage service (blob, file, queue, or table)
+- Account Level SAS
+  - Delegate access to multiple services in a storage account
+  - Provides additional administrative permissions
+
+Access to resources can be broken down further by creating SAS token with specific permissions.
+
+Shared Access Signature Features
+
+- Read and/or Write Permissions
+- Limited Range of Table Data
+- Temporary Access
+- Restrict Access to IP Addresses
+- Enforce HTTPS through SAS
+
+Shared Access Signature Parameters
+
+- REST API version
+- Validity start time
+- Validity end time
+- Type of resource
+- Permissions (read, write, delete, list)
+- IP address / range (optional)
+- Protocol (optional)
+- Signature (Parameters signed with Storage Account Key)
+
+Certain services have other parameters available.
+
+Shared Access Signatures are generated client side, using PowerShell, the CLI, client side libraries, or the Azure portal.  However, Azure doesn't track SAS tokens after they are created.  To invalidate a token, the Storage Account Key used to sign the token must be regenerated.  SAS token are best used in conjunction with stored access policies.
 
 ### Install and Use Azure Storage Explorer
 
 ### Manage Access Keys
+
+There are two types of access to consider when granting access to a storage account.
+
+- Management Plane
+  - Administrative tasks for the storage account
+  - Viewing properties assigning privileges, modifying configuration
+  - Permissions assigned through Role Based Access Control (RBAC)
+    - Roles with access to Storage Account Keys will have access to storage data
+    - Storage Account Contributor, Storage Account Key Operator Service, etc.
+- Data Plane
+  - Anonymous Access
+    - Blobs only
+    - Set using public access level on blob container
+  - Authenticated Access
+    - Storage Account Keys
+      - Provides full access to the storage account
+    - Shared Access Signature
+      - String which contains limited permissions to a data object
+    - Azure AD Authentication with RBAC
+      - Manage access to blob containers and queues for user and applications
+
+Azure Key Vault can manage Storage Account Keys and generate SAS.
+
+#### Storage Account Keys
+
+- There are two keys are available for every storage accounts
+- Provides full access to data plane of the Storage Account  
+- Can be used by either applications or users to access data
+- Each Storage Account Key can be regenerated individually
+  - Apps and admins should use the _same_ key
+  - Regenerate secondary key
+  - Update apps to use secondary key
+  - Regenerate primary key
 
 ### Monitor Activity Log by Using Log Analytics
 
