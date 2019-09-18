@@ -12,6 +12,14 @@ Training materials for the AZ-103 certification exam.
 
 >The data in your Microsoft Azure storage account is always replicated to ensure durability and high availability. Azure Storage copies your data so that it is protected from planned and unplanned events, including transient hardware failures, network or power outages, and massive natural disasters. You can choose to replicate your data within the same data center, across zonal data centers within the same region, or across geographically separated regions.
 
+[Grant Access to Azure Blob and Queue Data with RBAC](https://docs.microsoft.com/en-us/azure/storage/common/storage-auth-aad-rbac-portal)
+
+>Azure Active Directory (Azure AD) authorizes access rights to secured resources through role-based access control (RBAC). Azure Storage defines a set of built-in RBAC roles that encompass common sets of permissions used to access blob or queue data.
+
+[What is Managed Identities for Azure Resources](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
+
+>The feature provides Azure services with an automatically managed identity in Azure AD. You can use the identity to authenticate to any service that supports Azure AD authentication, including Key Vault, without any credentials in your code.
+
 ## Introduction
 
 Features of Azure Storage
@@ -103,7 +111,10 @@ For details on operation pricing, the Azure pricing calculator is a good resourc
 
 ### Data Transfer Options
 
-There is no charge for uploading data into Azure, but there are per gigabyte charges when data is read or downloaded out of an Azure region.  
+- There is no charge for uploading data into Azure, but there are per gigabyte charges when data is read or downloaded out of an Azure region.  
+- It is a good idea to enable the "Secure transfer required" which will require HTTPS be used for connections
+  - The will also require the SMB 3.0 protocol be used to provide encryption support for the Azure File Service
+  - The most secure method of communication would be configuring a VPN to secure the channel between your on premise network and Azure
 
 ## Skills
 
@@ -272,6 +283,12 @@ Certain services have other parameters available.
 
 Shared Access Signatures are generated client side, using PowerShell, the CLI, client side libraries, or the Azure portal.  However, Azure doesn't track SAS tokens after they are created.  To invalidate a token, the Storage Account Key used to sign the token must be regenerated.  SAS token are best used in conjunction with stored access policies.
 
+#### Stored Access Policies
+
+A stored access policy is a set of constraints that can be reused by multiple SAS.  The stored access policy is defined on a resource container, such as a blob, table, queue, or file share.  The policy is comprised of permissions, as well as a start and end time.  Currently, stored access policies are only available for service level SAS.  
+
+This lets you create a group of reusable permissions for your SAS tokens.  While this is convenient, it is really useful for revoking access to SAS tokens that reference the policy.  Deleting a policy, or changing the expiry time, will effectively revoke any SAS tokens that reference the policy.  Thus is the recommended way to use Shared Access Signatures.  
+
 ### Install and Use Azure Storage Explorer
 
 ### Manage Access Keys
@@ -308,6 +325,31 @@ Azure Key Vault can manage Storage Account Keys and generate SAS.
   - Regenerate secondary key
   - Update apps to use secondary key
   - Regenerate primary key
+
+#### Azure Key Vault
+
+- Storage account keys can be stored as Key Vault secrets
+- Azure Key Vault syncs keys with the Storage Account and can regenerate keys on a configurable schedule
+- Storage account keys values are never returned to the caller
+- Configure Shared Access Signature definitions instead of using keys
+  - Templates for account level or service level SAS tokens
+- Azure Key Vault generates a SAS token using the storage account key and the SAS template
+  - Returned to the caller as a Key Vault secret
+  - Application can use SAS token to authenticate against Azure storage
+
+This can be configured with using PowerShell or the Azure CLI.
+
+#### Authentication with RBAC
+
+- RBAC can be used to grant access to the data plane of the storage account to Azure AD identities
+  - Azure AD identities include users, groups, and application principals
+    - An application principal is an application that has been registered in Azure AD
+    - This give the application an identifier that can be assigned to roles in the storage account
+  - Currently limited to blobs and queues only
+  - Roles can be assigned at the subscription, resource group, storage account, or to blob/queue level
+- No longer need to store credentials within the application config files
+- Managed identities can also be assigned roles and permissions to Azure resources
+  - Used to authenticate applications running in Azure Virtual Machines and App Services
 
 ### Monitor Activity Log by Using Log Analytics
 
