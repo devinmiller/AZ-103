@@ -20,6 +20,14 @@ Training materials for the AZ-103 certification exam.
 
 >The feature provides Azure services with an automatically managed identity in Azure AD. You can use the identity to authenticate to any service that supports Azure AD authentication, including Key Vault, without any credentials in your code.
 
+[Configure Azure Storage Firewalls and Virtual Networks](https://docs.microsoft.com/en-us/azure/storage/common/storage-network-security)
+
+>Azure Storage provides a layered security model. This model enables you to secure your storage accounts to a specific subset of networks. When network rules are configured, only applications requesting data over the specified set of networks can access a storage account. You can limit access to your storage account to requests originating from specified IP addresses, IP ranges or from a list of subnets in Azure Virtual Networks.
+
+[Monitor a Storage Account in the Azure Portal](https://docs.microsoft.com/en-us/azure/storage/common/storage-monitor-storage-account)
+
+>Azure Storage Analytics provides metrics for all storage services, and logs for blobs, queues, and tables. You can use the Azure portal to configure which metrics and logs are recorded for your account, and configure charts that provide visual representations of your metrics data.
+
 ## Introduction
 
 Features of Azure Storage
@@ -119,6 +127,20 @@ For details on operation pricing, the Azure pricing calculator is a good resourc
 ## Skills
 
 ### Configure Network Access to the Storage Account
+
+The are two options available for establishing secure network boundaries for Azure Storage accounts.
+
+- Configure Azure Storage to access from Azure virtual networks only
+  - By default Storage Accounts are available to all networks, including the public internet
+  - Virtual network integration disables access from the internet and only allows access from configured virtual networks
+  - Exceptions can be added to allow access to trusted Microsoft services, as well, access to storage logging/metrics from any network
+- Limit internet access to certain IP addresses or ranges
+  - Firewall settings limit access to the storage account from IP addresses or ranges on the public internet
+  - Allows internet based services and on premises networks to be granted access while blocking general internet traffic
+  - Only public internet address can be specified in the firewall rules
+  - Private virtual network addresses are not allowed in the firewall rules
+
+For more information, see _Configure Azure Storage Firewalls and Virtual Networks_ in the [Links](#Links) section.
 
 ### Create and Configure Storage Account
 
@@ -291,6 +313,27 @@ This lets you create a group of reusable permissions for your SAS tokens.  While
 
 ### Install and Use Azure Storage Explorer
 
+Azure Storage Explorer is used to view and manage the contents of storage accounts on Windows, Mac, and Linux machines.
+
+When Azure Storage Explorer is installed you will be prompted to connect to an Azure Storage account.  This can be done through several methods.
+
+- Add an Azure Account
+  - Sign in using AAD authentication and navigating
+- Use a connection string
+  - Uses a connection string to connect to the account
+- Use a shared access signature URI
+  - Uses a Shared Access Signature as discussed above
+- Use a storage account name and key
+  - Uses a key defines in ‘Access Keys’
+- Attach to a local emulator
+  - Connects to a local instance of an Azure storage account
+
+It is also possible to access individual storage accounts by navigating to the account in the Azure Portal, navigating to the Overview page, and selecting "Open in Explorer".
+
+Once connected (using ‘Add an Azure Account’), you then select the subscriptions to view. When a subscription is selected you can then view any storage accounts and any blobs, file share, queues and tables in the account.
+
+From here you can right click any of the types of records and create new records such as File Shares. The image above shows a view of the File Shares type with a newly uploaded image file.
+
 ### Manage Access Keys
 
 There are two types of access to consider when granting access to a storage account.
@@ -352,6 +395,90 @@ This can be configured with using PowerShell or the Azure CLI.
   - Used to authenticate applications running in Azure Virtual Machines and App Services
 
 ### Monitor Activity Log by Using Log Analytics
+
+General information on using _Log Analytics_ and _Azure Monitor_ can be found in [Utilization and Consumption](../../Managing%20Subscriptions%20and%20Resources/Utilization%20and%20Consumption/README.MD)
+
+Azure storage provides metrics for all storage services, and logs for blobs, queues, and tables.
+
+#### Activity Log
+
+Considered a control plane, or management log that provides insight into the operations performed on the resource itself.
+
+Logs operations performed on the Storage Account (Management log)
+
+- Modifying user role assignments
+- Regenerating Storage Account keys
+- Changing Storage Account settings
+
+Does not include data related events, such as uploading or deleting blobs, tables, or queues.  Those are considered diagnostic logs, not management logs, and those types of data related activities are handled by data analytics.
+
+The Azure activity log is a subscription wide log.  Any events that take place within the subscription, for resources deployed using the resource manager model, will get logged to the Azure activity log.
+
+Types of Activity Log Events
+
+- Administrative Events
+  - Includes all changes to the resource, who made the change, and when
+  - Includes any changes to the RBAC assignments to the resource
+- Service Health Events
+  - Incidents in the Azure region, maintenance events, security and information events
+  - Only appear in activity log if you have resources that would be impacted by the event
+- Auto-scale Events
+  - For example, if VMs in an app service were scaled due to a metric reaching a threshold
+- Recommendations
+- Security Alerts
+  - Generated by Azure Security Center
+- Alerts
+  - User defined alerts are logged as well
+
+Activity Log Data
+
+- Events are stored for 90 days
+- Events can be archived for longer storage
+  - To Storage Account
+  - To Event Log
+- Can query Activity Log data
+  - Within Azure Portal
+  - PowerShell, Azure CLI, REST API
+  - Power BI Audit Logs Content Pack
+    - Provides charts and visualizations
+  - Azure Log Analytics
+    - Provides a central place to view log data along with a feature rich query language
+
+#### Storage Log
+
+Can log all the operations that occur against a storage account.  Logs both the successful requests and the failed requests.
+
+- Details of read, write, and delete operations against blobs, tables, and queues
+- Reasons for failed requests, such as timeouts, throttling, or authorization errors
+
+This can allow you to diagnose issues that have been reported by users, or issues that have been found through proactive monitoring.
+
+Storage Analytics Log Data
+
+- Type of Operation
+  - Listing blobs, creating blobs, reading service properties, etc
+- Success or failure of the operation
+- Object Key of the storage object being accessed
+- HTTP status code returned
+- Start time of the operation
+- Server and E2E latency
+- Authentication type
+  - Anonymous, Shared Access Signature, Storage Account key, etc.
+- IP address of caller
+- Type of client used (storage explorer, azcopy, browser, etc.)
+- Client Operation Id and Server Operation Id
+  - Used to correlate multiple operations for the same request
+  - Used to correlate client logging with server logging
+
+Storage Log Data
+
+- Blocks are written immediately to the blob
+- Blob is not available until log writer is flushed by Azure
+- The "Last Modified Datetime" may not accurately reflect log contents
+- Search +/- 15 minutes
+- Search based on Log metadata
+- Log data is still data in a storage account, so costs still apply
+- There is a 20TB limit on stored data, independent of Storage Account total limit
 
 ### Implement Azure Storage Replication
 
