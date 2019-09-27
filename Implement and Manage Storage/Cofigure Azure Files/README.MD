@@ -4,6 +4,10 @@ Training materials for the AZ-103 certification exam.
 
 ## Links
 
+[Use an Azure File Share with Windows](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-windows)
+
+>Azure Files is Microsoft's easy-to-use cloud file system. Azure file shares can be seamlessly used in Windows and Windows Server.
+
 ## Introduction
 
 Azure Files provides a flexible, easy to use SMB-compatible storage solution and with Azure Fils Sync becomes a core part of the organization's file storage strategy.
@@ -55,7 +59,10 @@ There are two primary versions of SMB used today.
   - Other Azure regions
   - Internet based clients providing port 445 (SMB) is enabled
   - To test if 445 is available to use
-    - Test-NetConnection - ComputerName <stoage account> -Port 445
+  
+    ``` powershell
+    PS C:\> Test-NetConnection - ComputerName <stoage account> -Port 445
+    ```
 
 #### Firewall and Virtual Network Integration
 
@@ -87,6 +94,32 @@ Why use Azure Files?
 
 - Access is via standard SMB client
 - Dialect of SMB is negotiated between the client and Azure Files upon connection
+- Encryption used if outside the Azure region or if required as part of the storage account configuration
+- SMB access utilizes the storage account name and access key
+- REST access can utilize Shared Access Signatures (SAS)
+
+A Shared Access Signature (SAS) can be used to access Azure Files when using the REST API, for example using the PowerShell cmdlets.
+
+Shared Access Signature Usage
+
+- When using SAS access to specific shares and files can be generated
+- SAS tokens can be based on policies
+- Tokens can limit rights and the duration of access
+- The SAS token is used when establishing the storage context (the actual connection)
+
+Azure Active Directory Authentication
+
+- Granular Access Control Lists that are integrated with corporate identity provide an optimal end-user experience
+- Azure Files utilize Azure AD for authentication via Azure AD Domain Services
+
+Azure AD Authentication Requirements
+
+- Azure AD Domain Services must be deployed to the virtual network
+  - It is linked to one, and only one, virtual network
+- Usage must be from a machine joined to the Azure AD Domain Service instance
+- Access Control Lists must be copied to Azure Files via Robocopy
+- The Azure Files share must NOT be part of an Azure File Sync sync group
+- A drive must be mapped to the Azure Files share
 
 ### Quota, Limits, and Security
 
