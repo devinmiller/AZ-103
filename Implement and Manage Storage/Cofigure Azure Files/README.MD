@@ -61,7 +61,7 @@ There are two primary versions of SMB used today.
   - To test if 445 is available to use
   
     ``` powershell
-    PS C:\> Test-NetConnection - ComputerName <stoage account> -Port 445
+    PS C:\> Test-NetConnection - ComputerName <storage account> -Port 445
     ```
 
 #### Firewall and Virtual Network Integration
@@ -123,7 +123,36 @@ Azure AD Authentication Requirements
 
 ### Quota, Limits, and Security
 
+Azure File Scale and Limits
+
+- 500 TB limit of storage accounts
+- 5 TB limit on file shares
+- 1 TB max file size
+- 1000 IOPS per file share
+- 60 MBPS throughput
+- 99.9% read access to data SLA
+
+[Documentation on Azure Storage Limits](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#storage-limits)
+
 ### Snapshot Capabilities
+
+- Point in time copy of a file share
+  - Will only capture change/delta of data
+- Are read-only
+- Accessed through numerous means
+  - Includes "Previous Versions" capability of windows
+  - File share portal in Azure
+- Does not replace proper backups
+- 200 snapshots are supported per file share
+- Azure Backup can be utilized to schedule and manage snapshots
+- If the file share is deleted all snapshots are also deleted
+
+### Azure Backup Integration
+
+- Azure Files content can be backed up to a recovery services vault in the same region
+- The file share or individual files or folders can be restored to the original or alternate location
+
+[Limitations for Azure File Share Backup During Preview](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files)
 
 ## Skills
 
@@ -136,5 +165,29 @@ Azure AD Authentication Requirements
 - REST access can utilize Shared Access Signatures (SAS)
 
 ### Create Azure File Sync Service
+
+#### Replication Options for File Services
+
+- Initially the File Replication Service was used for various data replication in Windows
+  - Was replaced by Distributed File System - Replication feature
+- Other data replication options such as xcopy and robocopy have been used
+- Considerations when replicating data include
+  - Locking files
+  - Data consistency, 
+  - Amount of data replicated
+  - Maintaining Access Control Lists
+
+#### Azure File Sync Overview
+
+- Enables replication from a single Azure Files share to one or more Windows based file servers
+- Utilizes an agent deployed on each Windows Servers instance that is then registered with the Storage Sync service then added to a sync group
+- Cloud tiering enables infrequently accessed data to stored in the cloud leaving a thumbprint on the server providing transparent access
+- Tiering is based on maintaining a certain percentage of free space
+
+#### Deploying Azure File Sync
+
+#### Configuring Azure File Sync Tiering
+
+#### Azure File Sync Limits and Scale
 
 ### Troubleshoot Azure File Sync
